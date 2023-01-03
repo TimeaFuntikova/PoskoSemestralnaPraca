@@ -1,0 +1,7 @@
+
+#ifndef POSKOSEMESTRALNAPRACA_K_S_CLIENT_H
+#define POSKOSEMESTRALNAPRACA_K_S_CLIENT_H
+
+int k_s_client(int argc, char *argv[]);
+
+#endif //POSKOSEMESTRALNAPRACA_K_S_CLIENT_H

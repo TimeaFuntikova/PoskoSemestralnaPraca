@@ -2,7 +2,7 @@
 // Created by timka on 2. 1. 2023.
 //
 #include "k_s_definitions.h"
-
+#include "k_s_client.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,7 +12,7 @@
 #include <netdb.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[]) {
+int k_s_client(int argc, char *argv[]) {
     if (argc < 3) {
         printError("Klienta je nutne spustit s nasledujucimi argumentmi: adresa port.");
     }
