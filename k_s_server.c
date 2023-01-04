@@ -23,7 +23,7 @@ char* spracujData(char *data) {
     return data;
 }
 
-int k_s_server(int argc, char** argv) {
+int server(int argc, char** argv) {
     if (argc < 2) {
         printError("Sever je nutne spustit s nasledujucimi argumentmi: port.");
     }
@@ -48,10 +48,10 @@ int k_s_server(int argc, char** argv) {
     if (bind(serverSocket, (struct sockaddr *) &serverAddress, sizeof(serverAddress)) < 0) {
         printError("Chyba - bind.");
     }
-
     //server bude prijimat nove spojenia cez socket serverSocket <sys/socket.h>
     listen(serverSocket, 10);
 
+    printf("Server: --Caka sa na pripojenie klienta.--\n");
     //server caka na pripojenie klienta <sys/socket.h>
     struct sockaddr_in clientAddress;
     socklen_t clientAddressLength = sizeof(clientAddress);
@@ -152,7 +152,7 @@ int main(int argc, char argv[]) {
 
     srand(time(0));
 
-    charmode = argv[1];
+    char* mode = argv[1];
     int port = atoi(argv[2]);
     int sockfd, newsockfd;
     socklen_t clilen;

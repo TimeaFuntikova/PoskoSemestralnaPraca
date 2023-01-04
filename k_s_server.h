@@ -5,6 +5,6 @@
 #ifndef POSKOSEMESTRALNAPRACA_K_S_SERVER_H
 #define POSKOSEMESTRALNAPRACA_K_S_SERVER_H
 
-int k_s_server(int argc, char** argv);
+int server(int argc, char** argv);
 
 #endif //POSKOSEMESTRALNAPRACA_K_S_SERVER_H

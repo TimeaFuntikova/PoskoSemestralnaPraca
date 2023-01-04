@@ -5,20 +5,18 @@
 
 int main(int argc, char* argv[]) {
 
-    char* newArgv[argc -1];
+    char* newArgv[2];
     newArgv[0] = argv[0];
-    for(int i = 2; i<= argc;i++) {
-     newArgv[i-1] = argv[i];
-    }
+    newArgv[1] = argv[2];
 
-    if(strcmp(argv[1], "k_s_server") == 0) {
-       return k_s_server(argc -1, newArgv);
+    if(strcmp(argv[1], "server") == 0) {
+        return server(2, newArgv);
     }
-    else if(strcmp(argv[1], "k_s_client") == 0) {
-        return k_s_client(argc -1, newArgv);
+    else if(strcmp(argv[1], "client") == 0) {
+        return client(argc - 1, argv);
     }
     else {
-            fprintf(stderr,"Sever je nutne spustit s arguememtami\n");
-            return 1;
-        }
+        fprintf(stderr,"Zle argumenty!\n");
+        return 1;
+    }
 }
