@@ -13,6 +13,7 @@ int client(int argc, char *argv[]) {
         if (argc < 3) {
             printError("Klienta je nutne spustit s nasledujucimi argumentmi: adresa port.");
         }
+
         //ziskanie adresy a portu servera <netdb.h>
         struct hostent *server = gethostbyname(argv[1]);
         if (server == NULL) {
@@ -27,6 +28,7 @@ int client(int argc, char *argv[]) {
         if (sock < 0) {
             printError("Chyba - socket.");
         }
+
         //definovanie adresy servera <arpa/inet.h>
         struct sockaddr_in serverAddress;
         bzero((char *)&serverAddress, sizeof(serverAddress));
