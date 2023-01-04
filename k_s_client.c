@@ -15,12 +15,16 @@ int client(int argc, char *argv[]) {
         }
 
         //ziskanie adresy a portu servera <netdb.h>
-        struct hostent *server = gethostbyname(argv[1]);
+
+    struct hostent *server = gethostbyname(argv[2]);
         if (server == NULL) {
             printError("Server neexistuje.");
         }
-        int port = atoi(argv[2]);
+        int port = atoi(argv[3]);
         if (port <= 0) {
+            for (int i = 0; i < 3; ++i) {
+                printf(" %s\n", argv[i]);
+            }
             printError("Port musi byt cele cislo vacsie ako 0.");
         }
         //vytvorenie socketu <sys/socket.h>

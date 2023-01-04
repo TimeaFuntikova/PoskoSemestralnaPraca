@@ -5,15 +5,13 @@
 
 int main(int argc, char* argv[]) {
 
-    char* newArgv[2];
-    newArgv[0] = argv[0];
-    newArgv[1] = argv[2];
-
+    //./posko server 10050
     if(strcmp(argv[1], "server") == 0) {
-        return server(2, newArgv);
+        return server(argc, argv);
     }
+        //./posko client localhost 10050
     else if(strcmp(argv[1], "client") == 0) {
-        return client(argc - 1, argv);
+        return client(argc, argv);
     }
     else {
         fprintf(stderr,"Zle argumenty!\n");

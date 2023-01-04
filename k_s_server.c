@@ -26,7 +26,7 @@ int server(int argc, char** argv) {
     if (argc < 2) {
         printError("Sever je nutne spustit s nasledujucimi argumentmi: port.");
     }
-    int port = atoi(argv[1]);
+    int port = atoi(argv[2]);
     if (port <= 0) {
         printError("Port musi byt cele cislo vacsie ako 0.");
     }
@@ -63,6 +63,7 @@ int server(int argc, char** argv) {
     }
 
     printf("Klient sa pripojil na server.\n");
+
     char buffer[BUFFER_LENGTH + 1];
     buffer[BUFFER_LENGTH] = '\0';
     int koniec = 0;
@@ -86,86 +87,3 @@ int server(int argc, char** argv) {
 
     return (EXIT_SUCCESS);
 }
-
-/*
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-
-#define NUM_PLAYERS 2
-#define NUM_TOKENS 4
-#define BOARD_SIZE 20
-#define MAX_MESSAGE_LEN 256
-
-// Struct for a player
-typedef struct {
-    int tokens[NUM_TOKENS];
-    int numTokensAtHome;
-    int numTokensFinished;
-    int sockfd;
-} Player;
-
-// Roll a 6-sided dice
-int rollDice() {
-    return rand() % 6 + 1;
-}
-
-// Initialize the players
-void initPlayers(Player players[NUM_PLAYERS]) {
-    for (int i = 0; i < NUM_PLAYERS; i++) {
-        players[i].numTokensAtHome = NUM_TOKENS;
-        players[i].numTokensFinished = 0;
-        for (int j = 0; j < NUM_TOKENS; j++) {
-            players[i].tokens[j] = -1;
-        }
-    }
-}
-
-// Print the current state of the game
-void printGameState(Player players[NUM_PLAYERS]) {
-    printf("Current game state:\n");
-    for (int i = 0; i < NUM_PLAYERS; i++) {
-        printf("Player %d: %d tokens at home, %d tokens finished\n", i+1, players[i].numTokensAtHome, players[i].numTokensFinished);
-        for (int j = 0; j < NUM_TOKENS; j++) {
-            printf("  Token %d: ", j+1);
-            if (players[i].tokens[j] == -1) {
-                printf("At home\n");
-            } else {
-                printf("On square %d\n", players[i].tokens[j]);
-            }
-        }
-    }
-}
-
-int main(int argc, char argv[]) {
-    if (argc < 3) {
-        fprintf(stderr, "Usage: %s <server/client> <port>\n", argv[0]);
-        exit(1);
-    }
-
-    srand(time(0));
-
-    char* mode = argv[1];
-    int port = atoi(argv[2]);
-    int sockfd, newsockfd;
-    socklen_t clilen;
-    struct sockaddr_in serv_addr, cli_addr;
-    int n;
-
-    Player players[NUM_PLAYERS];
-    initPlayers(players);
-
-    if (strcmp(mode, "server") == 0) {
-        sockfd = socket(AF_INET, SOCK_STREAM, 0);
-        if (sockfd < 0) {
-            perror("ERROR opening socket");
-            exit(1);
-        }
-        memset
-        */
