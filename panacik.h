@@ -9,7 +9,6 @@
 #include <stdbool.h>
 #include "farbaHraca.h"
 #include "stavPanacika.h"
-#include "Obrazok.h"
 
 extern const int MAX_PREJDENYCH;
 
@@ -21,8 +20,9 @@ typedef struct panacik {
     int pocetPrejdenychPolicok;
     FARBA_HRACA farbaHraca;
     STAV_PANACIKA stavPanacika;
-    OBRAZOK obrazok;
+    char obrazok;
 } PANACIK;
+
 PANACIK *Panacik_new(int idPanacika_, int idHraca_, FARBA_HRACA farbaHraca_);
 void Panacik_free(PANACIK *panacik);
 

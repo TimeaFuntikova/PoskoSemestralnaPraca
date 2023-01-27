@@ -21,8 +21,6 @@ add_executable(PoskoSemestralnaPraca
         policko.h
         hrac.c
         hrac.h
-        Obrazok.c
-        Obrazok.h
         hraciaPlocha.c
         hraciaPlocha.h
         hraClovece.c

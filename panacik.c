@@ -10,12 +10,10 @@ PANACIK *Panacik_new(int idPanacika_, int idHraca_, FARBA_HRACA farbaHraca_) {
     panacik->idPanacikaPanacik = idPanacika_;
     panacik->farbaHraca = farbaHraca_;
     panacik->stavPanacika = NEDEFINOVANY;
-    nastavObrazok(panacik);
     printf("Panacik sa vytvoril.\n");
     return panacik;
 }
 void Panacik_free(PANACIK *panacik) {
-    OBRAZOK_free(&panacik->obrazok);
     free(panacik);
 }
 
@@ -75,17 +73,19 @@ void nastavPanacikaNaCielovuPoziciu(PANACIK *p, int pX_, int pY_){
 
 //neni dynamicky alokovany obrazok
 void nastavObrazok(PANACIK *panacik) {
+
+    panacik->obrazok = 'n'; //preddef.hodnota
         switch (panacik->farbaHraca) {
             case ZELENA:
-                (*panacik->obrazok.o )= 'g';
+                panacik->obrazok = 'g';
             case MODRA:
-                (*panacik->obrazok.o )= 'b';
+                panacik->obrazok = 'b';
             case ZLTA:
-                (*panacik->obrazok.o )= 'y';
+                panacik->obrazok = 'y';
             case CERVENA:
-                (*panacik->obrazok.o )= 'r';
+                panacik->obrazok = 'r';
             default:
-                printf("NEDEFINOVANE, INTERNAL ERROR\n");
+                printf("NEDEFINOVANE, INTERNAL ERROR\n"); //tu sa sa vytvoria 2 panacikovia nedef (pocet hracov ==2) ale hra konci.
         }
 }
 

@@ -165,7 +165,7 @@ PANACIK* zoberPanacika(HRAC *hrac) {
 void nacitajPanacikovHraca(HRAC *hrac) {
 
     PANACIK * p = Panacik_new(hrac->idAktualnyPanacik,hrac->idHraca, hrac->farbaHraca);
-
+    nastavObrazok(p);
     for(int i = 0; i < hrac->POCET_PANACIKOV; i++) {
 
         int idPanacika = i + 1;
