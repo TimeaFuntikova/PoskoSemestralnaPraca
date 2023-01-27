@@ -1,16 +1,24 @@
 #include "hraciaPlocha.h"
+const int POCET_BLOKOV = 11;
 
-PLOCHA *plocha() {
+PLOCHA *Plocha_new() {
     PLOCHA *plocha = malloc(sizeof(PLOCHA));
     if (plocha == NULL)
         return NULL;
+    printf("Plocha sa vytvorila.\n");
+
+    return plocha;
 }
 
 void Plocha_free(PLOCHA *plocha) {
     free(plocha);
 }
 
-void nacitajFarbyBlokov(PLOCHA *p) {
+void nacitajFarbyBlokov(PLOCHA *plocha) {
+
+    FARBA_HRACA *farbaHraca = FarbaHraca_new();
+    plocha->farbyHracichBlokov[4] = *farbaHraca;
+
     FARBA_HRACA farba = 0;
 
     for (int i = 0; i < 4; ++i) {
@@ -27,7 +35,7 @@ void nacitajFarbyBlokov(PLOCHA *p) {
         if(idBloku ==4) {
             farba = ZLTA;
         }
-        p->farbyHracichBlokov[i] = dajFarbuPanacika(farba);
+        plocha->farbyHracichBlokov[i] = farba;
     }
 }
 
@@ -203,5 +211,7 @@ void nacitajHraciuPlochu(PLOCHA *p){
 }
 
 static PLOCHA dajPlocha(){
-   PLOCHA plocha = plocha;
+    //Vytvori sa tu objekt plochy:
+    PLOCHA *plocha = Plocha_new();
+    return *plocha;
 }

@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-const int MAX_POCET_HRACOV = 4;
+extern const int MAX_POCET_HRACOV;
 typedef struct hra {
     KOCKA kocka;
     HRAC hraci[4];
@@ -18,7 +18,7 @@ typedef struct hra {
     PLOCHA plocha;
 
 }HRA_CLOVECE;
-
+HRA_CLOVECE *hra();
 void Hra_free(HRA_CLOVECE *hra);
 
 void uvolniPamat(HRA_CLOVECE *hra);

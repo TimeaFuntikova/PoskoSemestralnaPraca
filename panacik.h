@@ -4,15 +4,14 @@
 
 #ifndef POSKOSEMESTRALNAPRACA_PANACIK_H
 #define POSKOSEMESTRALNAPRACA_PANACIK_H
-#include "farbaHraca.h"
-#include "stavPanacika.h"
-#include "Obrazok.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "farbaHraca.h"
+#include "stavPanacika.h"
+#include "Obrazok.h"
 
-
-const int MAX_PREJDENYCH = 40;
+extern const int MAX_PREJDENYCH;
 
 typedef struct panacik {
     int idPanacikaPanacik;
@@ -24,6 +23,8 @@ typedef struct panacik {
     STAV_PANACIKA stavPanacika;
     OBRAZOK obrazok;
 } PANACIK;
+PANACIK *Panacik_new(int idPanacika_, int idHraca_, FARBA_HRACA farbaHraca_);
+void Panacik_free(PANACIK *panacik);
 
 int getIdHraca(PANACIK *panacik);
 int getPocetPrejdenychPolicok(PANACIK *p);

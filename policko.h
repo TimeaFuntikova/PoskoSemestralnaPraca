@@ -2,6 +2,8 @@
 #ifndef POSKOSEMESTRALNAPRACA_POLICKO_H
 #define POSKOSEMESTRALNAPRACA_POLICKO_H
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 
 typedef struct policko { ;

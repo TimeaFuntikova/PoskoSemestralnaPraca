@@ -7,12 +7,13 @@
 #include "farbaHraca.h"
 #include "panacik.h"
 
-const int POCET_PANACIKOV = 4;
+extern const int POCET_PANACIKOV;
+
 typedef struct Hrac {
     int idHraca;
     int POCET_PANACIKOV;
     FARBA_HRACA farbaHraca;
-    PANACIK panaciky[4]; //malloc4 krat
+    PANACIK panaciky[4];
     int idAktualnyPanacik;
     bool maPanacikaNaDrahe;
     bool maVsetkyPanacikyVCieli;

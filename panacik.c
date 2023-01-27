@@ -1,7 +1,8 @@
 #include "panacik.h"
-#include <stdio.h>
 
-PANACIK *Panacik(int idPanacika_, int idHraca_, FARBA_HRACA farbaHraca_) {
+const int MAX_PREJDENYCH = 40;
+
+PANACIK *Panacik_new(int idPanacika_, int idHraca_, FARBA_HRACA farbaHraca_) {
     PANACIK *panacik = malloc(sizeof(PANACIK)); //problem s implicitnou deklaraciou pre malloc
     if (panacik == NULL)
         return NULL;
@@ -10,12 +11,14 @@ PANACIK *Panacik(int idPanacika_, int idHraca_, FARBA_HRACA farbaHraca_) {
     panacik->farbaHraca = farbaHraca_;
     panacik->stavPanacika = NEDEFINOVANY;
     nastavObrazok(panacik);
-
+    printf("Panacik sa vytvoril.\n");
     return panacik;
 }
 void Panacik_free(PANACIK *panacik) {
+    OBRAZOK_free(&panacik->obrazok);
     free(panacik);
 }
+
 int getIdHraca(PANACIK *panacik) {return panacik->idHracaPanacik;}
 int getPocetPrejdenychPolicok(PANACIK *p) {return p->pocetPrejdenychPolicok;}
 int getIdPanacika(PANACIK *p){return p->idPanacikaPanacik;}
@@ -50,7 +53,7 @@ void nastavPanacikaNaDomovskuPoziciu(PANACIK *p, int pX_, int pY_){
     p->stavPanacika = JE_DOMA;
 }
 
-void nastavPanacikaNaNovuPoziciu(PANACIK *p, int pX_, int pY_){
+void nastavPanacikaNaNovuPoziciu(PANACIK *p, int pX_, int pY_) {
     nastavPanacikaNaPoziciu(p,pX_,pY_);
     p->stavPanacika = JE_NA_DRAHE;
 }
@@ -70,8 +73,8 @@ void nastavPanacikaNaCielovuPoziciu(PANACIK *p, int pX_, int pY_){
      nastavPanacikaNaPoziciu(p, novaPoziciaX, novaPoziciaY);
 }
 
+//neni dynamicky alokovany obrazok
 void nastavObrazok(PANACIK *panacik) {
-    if(panacik->farbaHraca != NULL) {
         switch (panacik->farbaHraca) {
             case ZELENA:
                 (*panacik->obrazok.o )= 'g';
@@ -84,7 +87,6 @@ void nastavObrazok(PANACIK *panacik) {
             default:
                 printf("NEDEFINOVANE, INTERNAL ERROR\n");
         }
-    }
 }
 
 void zmazPanacika(PANACIK *p){

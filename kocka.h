@@ -4,7 +4,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-const int POCET_STRAN_KOCKY = 6;
+extern const int POCET_STRAN_KOCKY;
+
 typedef struct kocka {
     int hod;
 } KOCKA;

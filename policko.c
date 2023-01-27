@@ -2,8 +2,7 @@
 
 POLICKO *Policko() {
     POLICKO *Policko = malloc(sizeof(POLICKO));
-    //if (Policko == NULL)
-      //  return NULL;
+    if (Policko == NULL) {return NULL;}
     return Policko;
 }
 

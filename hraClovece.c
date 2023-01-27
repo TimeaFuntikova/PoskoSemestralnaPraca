@@ -1,11 +1,14 @@
 #include "hraClovece.h"
+const int MAX_POCET_HRACOV = 4;
 
 HRA_CLOVECE *hra() {
     HRA_CLOVECE *hra = malloc(sizeof(HRA_CLOVECE));
-    if (hra == NULL)
+    if (hra == NULL) {
         return NULL;
-    nacitajHraciuPlochu(&(hra->plocha));
-    novaHra(hra);
+        printf("Hra sa nevytvorila.\n");
+    }
+    printf("Hra sa vytvorila.\n");
+    return hra;
 }
 
 void Hra_free(HRA_CLOVECE *hra) {
@@ -70,12 +73,14 @@ HRAC dajVolnehoHraca(HRA_CLOVECE *hra) {
 }
 
 void novaHra(HRA_CLOVECE *hra) {
-    clear(hra);
+    //clear(hra);
     nastavPocetHracov(hra);
 
     while(hra->pocetHracov < 1 || hra->pocetHracov > 4) {
         nastavPocetHracov(hra);
     }
+    PLOCHA *plocha = Plocha_new();
+    nacitajHraciuPlochu(plocha);
     zacniHru(hra);
 }
 
@@ -84,7 +89,8 @@ void nastavPocetHracov(HRA_CLOVECE *hra) {
     int min = 0;
     while(zadanyPocetHracov <= min) {
         printf("Zadaj pocet hracov: ");
-        scanf("%d", &zadanyPocetHracov);
+        //scanf("%d", &zadanyPocetHracov);
+        zadanyPocetHracov = 2;
         printf("Number = %d\n", zadanyPocetHracov);
         hra->pocetHracov = zadanyPocetHracov;
     }
@@ -92,8 +98,16 @@ void nastavPocetHracov(HRA_CLOVECE *hra) {
 }
 
 void nacitajHracov(HRA_CLOVECE *hra) {
+    HRAC * h = hrac(0,0);
     FARBA_HRACA farba = 0;
+
+    for (int i = 0; i < hra->pocetHracov; ++i) {
+        hra->hraci[i] = *h;
+        nacitajPanacikovHraca(h);
+
+    }
     for (int i = 0; i < MAX_POCET_HRACOV; ++i) {
+
         int idHraca = i+1;
         if(idHraca ==1) {
             farba = ZELENA;
@@ -107,7 +121,8 @@ void nacitajHracov(HRA_CLOVECE *hra) {
             farba = ZLTA;
         }
 
-        if(idHraca > 0 && farba != NULL) {
+        if(idHraca > 0 && (farba == ZELENA) ||
+        farba == MODRA || farba == CERVENA || farba ==ZLTA) {
             hra->hraci[i] = *(hrac(idHraca,farba));
         }
     } hra->aktualnyHrac = hra->hraci[0];
@@ -215,5 +230,3 @@ void tahHraca(HRA_CLOVECE *hra, int hodeneCisloNaKocke) {
     }
     pokracovatHodomKocky(hra,&(hra->kocka));
 }
-
-

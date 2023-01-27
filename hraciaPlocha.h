@@ -2,17 +2,17 @@
 #ifndef POSKOSEMESTRALNAPRACA_HRACIAPLOCHA_H
 #define POSKOSEMESTRALNAPRACA_HRACIAPLOCHA_H
 #include "farbaHraca.h"
+#include <stdlib.h>
 #include <stdio.h>
 
-const int POCET_BLOKOV = 11;
+extern const int POCET_BLOKOV;
 
 typedef struct plocha {
     char plocha[11][11];
     FARBA_HRACA farbyHracichBlokov[];
-
 }PLOCHA;
 
-PLOCHA *plocha();
+PLOCHA *Plocha_new();
 void Plocha_free(PLOCHA *plocha);
 void nacitajHraciuPlochu(PLOCHA *plocha);
 void nacitajFarbyBlokov(PLOCHA *plocha);

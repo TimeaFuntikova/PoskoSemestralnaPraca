@@ -1,4 +1,5 @@
 #include "hrac.h"
+const int POCET_PANACIKOV = 4;
 
 HRAC *hrac(int id, FARBA_HRACA farba) {
     HRAC *hrac = malloc(sizeof(HRAC));
@@ -9,8 +10,10 @@ HRAC *hrac(int id, FARBA_HRACA farba) {
     hrac->maPanacikaNaDrahe = false;
     hrac->maVsetkyPanacikyVCieli = false;
     hrac->pocetHodovKocky = 0;
-    nacitajPanacikovHraca(hrac);
+    //nacitajPanacikovHraca(hrac);
+    printf("Hrac sa vytvoril.\n");
     return hrac;
+
 }
 
 void Hrac_free(HRAC *hrac) {
@@ -160,8 +163,13 @@ PANACIK* zoberPanacika(HRAC *hrac) {
 }
 
 void nacitajPanacikovHraca(HRAC *hrac) {
+
+    PANACIK * p = Panacik_new(hrac->idAktualnyPanacik,hrac->idHraca, hrac->farbaHraca);
+
     for(int i = 0; i < hrac->POCET_PANACIKOV; i++) {
+
         int idPanacika = i + 1;
+        hrac->panaciky[i] = *p;
         hrac->panaciky[i].idPanacikaPanacik = idPanacika;
         hrac->panaciky[i].idHracaPanacik = hrac->idHraca;
         hrac->panaciky[i].farbaHraca = hrac->farbaHraca;
@@ -171,13 +179,13 @@ void nacitajPanacikovHraca(HRAC *hrac) {
 }
 
 void zmazVsetkychPanacikov(HRAC *hrac) {
-    if (hrac->panaciky != NULL) {
+
         for (int i = 0; i < hrac->POCET_PANACIKOV; i++) {
             zmazPanacika(&(hrac->panaciky[i]));//zmaze instancie
-        }
+
         free(hrac->panaciky); //uvolni pamat pola kde boli uchovane panaciky
     }
-    hrac->maPanacikaNaDrahe = false;
+    hrac->maPanacikaNaDrahe = false; //signal aborted - lebo hrac este neexistuje!
 }
 
 void nastavDomovPanacika(HRAC *hrac,PANACIK *panacik) {
@@ -223,7 +231,7 @@ void nastavDomovPanacika(HRAC *hrac,PANACIK *panacik) {
             if (p != NULL) {
                 vypisStavPanacik(p);
             } else {
-                printf("Panacik nie je dostupny!");
+                printf("Panacik_new nie je dostupny!");
             }
         }
     }

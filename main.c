@@ -3,10 +3,13 @@
 //#include <string.h>
 #include <stdio.h>
 #include <time.h>
-
+#include "hraClovece.h"
 
 int main(int argc, char* argv[]) {
-
+    HRA_CLOVECE *clovece = hra();
+    novaHra(clovece);
+    Hra_free(clovece);
+    printf("Koniec Programu.\n");
     /*
     srand(time(NULL));
 

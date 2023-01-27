@@ -1,5 +1,7 @@
 #include "kocka.h"
 
+const int POCET_STRAN_KOCKY = 6;
+
 KOCKA *Kocka() {
     KOCKA *kocka = malloc(sizeof(KOCKA));
     if (kocka == NULL)
@@ -15,7 +17,6 @@ void Kocka_free(KOCKA *kocka) {
 void vynulujKocku(KOCKA *kocka) {
     kocka->hod = 0;
 }
-
 
 int generujHod() {
     return rand() % POCET_STRAN_KOCKY + 1;
