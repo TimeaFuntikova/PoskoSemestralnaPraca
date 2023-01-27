@@ -1,9 +1,14 @@
 #include "k_s_server.h"
 #include "k_s_client.h"
-#include <string.h>
+//#include <string.h>
 #include <stdio.h>
+#include <time.h>
+
 
 int main(int argc, char* argv[]) {
+
+    /*
+    srand(time(NULL));
 
     //./posko server 10050
     if(strcmp(argv[1], "server") == 0) {
@@ -17,4 +22,5 @@ int main(int argc, char* argv[]) {
         fprintf(stderr,"Zle argumenty!\n");
         return 1;
     }
+     */
 }
